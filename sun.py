@@ -80,7 +80,7 @@ def get_event(event_date: date, latitude: float, longitude: float, event: str):
     if event == "sunset":
         H = (acos(cosH)) / 15
 
-    print("H", H)
+    # print("H", H)
 
     # 8. calculate local mean time of rising/setting
     T = H + right_ascension - (0.06571 * t) - 6.622
@@ -142,11 +142,11 @@ def pretty_pretty_sun(event_date, latitude, longitude, tz):
     print(event_date, "\t\t", "{:%H:%M:%S}".format(sunrise), "\t", *data, "\t", "{:%H:%M:%S}".format(sunset), sep="")
 
 
-# print("Auckland")
-# for i in range((date(2019, 12, 31) - date(2019, 1, 1)).days + 1):
-#     day = date(2019, 1, 1) + timedelta(days=i)
-#     pretty_pretty_sun(day, latitude=-36.8485, longitude=174.7633, tz=pytz.timezone("Pacific/Auckland"))
-#
+print("Auckland")
+for i in range((date(2019, 12, 31) - date(2019, 1, 1)).days + 1):
+    day = date(2019, 1, 1) + timedelta(days=i)
+    pretty_pretty_sun(day, latitude=-36.8485, longitude=174.7633, tz=pytz.timezone("Pacific/Auckland"))
+
 # print("Oslo")
 # for i in range((date(2019, 12, 31) - date(2019, 1, 1)).days + 1):
 #     day = date(2019, 1, 1) + timedelta(days=i)
