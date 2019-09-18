@@ -125,7 +125,9 @@ def pretty_pretty_sun(event_date, latitude, longitude, tz):
 
     data = []
     for _ in range((24 * 4) + 1):
-        data.append("·")
+        data.append(" ")
+    data[0] = "$"
+    data[len(data) - 1] = "$"
 
     sunrise_seconds = sunrise.hour * 60 * 60 + sunrise.minute * 60
     sunset_seconds = sunset.hour * 60 * 60 + sunset.minute * 60
@@ -133,13 +135,14 @@ def pretty_pretty_sun(event_date, latitude, longitude, tz):
     sunrise_frac = int((sunrise_seconds / 86400) * len(data))
     sunset_frac = int((sunset_seconds / 86400) * len(data))
 
-    data[sunrise_frac] = "|"
-    data[sunset_frac] = "|"
+    data[sunrise_frac] = "X"
+    data[sunset_frac] = "X"
 
     for x in range(sunrise_frac + 1, sunset_frac):
-        data[x] = "*"
+        data[x] = "X"
 
-    print(event_date, "\t\t", "{:%H:%M:%S}".format(sunrise), "\t", *data, "\t", "{:%H:%M:%S}".format(sunset), sep="")
+    print(event_date, "\t\t", "{:%H:%M:%S}".format(sunrise), "\t", *data, "\t", "{:%H:%M:%S}".format(sunset), "<br />",
+          sep="")
 
 
 print("Auckland")
